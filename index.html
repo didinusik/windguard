@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Виндгард — Автоматизация входных групп</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #0d4d92;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #0d4d92;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(to right, #eef4fb, #ffffff);
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 20px;
+      color: #0d4d92;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0d4d92;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #08376a;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+      color: #0d4d92;
+    }
+
+    /* ABOUT */
+
+    .about-text {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 50px;
+      color: #555;
+      font-size: 18px;
+    }
+
+    .advantages {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .advantage-card {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    .advantage-card h3 {
+      margin-bottom: 15px;
+      color: #0d4d92;
+    }
+
+    /* CATALOG */
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card h3 {
+      margin-bottom: 15px;
+      color: #0d4d92;
+    }
+
+    .product-card p {
+      color: #555;
+    }
+
+    /* CONTACTS */
+
+    .contacts-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0d4d92;
+      color: white;
+      text-align: center;
+      padding: 25px 0;
+      margin-top: 50px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 768px) {
+
+      .header-content {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        text-align: center;
+        min-height: 70vh;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .contacts-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">Виндгард</div>
+
+      <nav>
+        <ul>
+          <li><a href="#about">О компании</a></li>
+          <li><a href="#catalog">Каталог</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Автоматизация дверных и оконных систем</h1>
+
+      <p>
+        Надёжные решения для автоматических дверей,
+        систем дымоудаления и вентиляции.
+      </p>
+
+      <a href="#catalog" class="btn">Перейти в каталог</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="container">
+
+      <h2 class="section-title">О компании</h2>
+
+      <p class="about-text">
+        Компания «ВИНДГАРД» создана группой единомышленников для обеспечения рынка доступными и качественными товарами в области: автоматизации входных групп - автоматические распашные привода под собственным брендом «СИЛАЧ»; систем дымоудаления и систем вентиляции в помещениях и на объектах; системы управления дверной автоматикой (радары, сенсоры и датчики безопасности, переключатели, беспроводные устройства, автоматическое управление антипаникой и другое)
+      </p>
+
+      <div class="advantages">
+
+        <div class="advantage-card">
+          <h3>Качественное оборудование</h3>
+          <p>Поставляем проверенные и надёжные системы автоматизации.</p>
+        </div>
+
+        <div class="advantage-card">
+          <h3>Опыт работы</h3>
+          <p>Многолетний опыт в сфере инженерных и автоматических систем.</p>
+        </div>
+
+        <div class="advantage-card">
+          <h3>Поддержка клиентов</h3>
+          <p>Консультации и помощь в подборе оборудования.</p>
+        </div>
+
+        <div class="advantage-card">
+          <h3>Оптовые поставки</h3>
+          <p>Работаем как с частными клиентами, так и с организациями.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG -->
+
+  <section id="catalog">
+    <div class="container">
+
+      <h2 class="section-title">Каталог</h2>
+
+      <div class="catalog-grid">
+
+        <div class="product-card">
+          <h3>Привод «СИЛАЧ»</h3>
+          <p>
+            Автоматический привод для дверей с высокой
+            производительностью и надёжностью.
+          </p>
+        </div>
+
+        <div class="product-card">
+          <h3>Системы дымоудаления</h3>
+          <p>
+            Оборудование для обеспечения безопасности
+            и удаления дыма из помещений.
+          </p>
+        </div>
+
+        <div class="product-card">
+          <h3>Вентиляционные системы</h3>
+          <p>
+            Современные решения для эффективного воздухообмена
+            в зданиях и производстве.
+          </p>
+        </div>
+
+        <div class="product-card">
+          <h3>Блоки управления</h3>
+          <p>
+            Электронные системы управления для автоматизации
+            инженерных решений.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+
+  <section id="contacts">
+    <div class="container">
+
+      <h2 class="section-title">Контакты</h2>
+
+      <div class="contacts-wrapper">
+
+        <div class="contact-info">
+          <p><strong>Телефон:</strong> +7 (960) 052-47-30</p>
+          <p><strong>Email:</strong> sale1@windguard.ru</p>
+          <p><strong>Адрес:</strong> г. Казань, Оренбургский тракт, д. 20, офис 115</p>
+        </div>
+
+        <form>
+          <input type="text" placeholder="Ваше имя" required>
+
+          <input type="email" placeholder="Ваш Email" required>
+
+          <textarea placeholder="Ваше сообщение"></textarea>
+
+          <button class="btn" type="submit">
+            Отправить
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container">
+      © 2026 ООО «Виндгард». Все права защищены.
+    </div>
+  </footer>
+
+</body>
+</html>
